@@ -1,6 +1,6 @@
 pkgname=automount-usb
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Automount USB on boot and try to start mariadb after each mount"
 arch=('any')
 url="http://mobiusstrip.eu"
@@ -24,7 +24,7 @@ build() {
 }
 
 package() {
-  install -Dm0644 $srcdir/usb-mount.sh $pkgdir/usr/local/bin/usb-mount.sh
+  install -Dm0777 $srcdir/usb-mount.sh $pkgdir/usr/local/bin/usb-mount.sh
   install -Dm0644 $srcdir/usb-mount\@.service $pkgdir/usr/lib/systemd/system/usb-mount\@.service
   install -Dm0644 $srcdir/98-usb-mount.rules $pkgdir/etc/udev/rules.d/98-usb-mount.rules
   install -Dm0644 $srcdir/99-mariadb-delay.rules $pkgdir/etc/udev/rules.d/99-mariadb-delay.rules
